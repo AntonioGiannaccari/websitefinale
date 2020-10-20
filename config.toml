@@ -92,17 +92,17 @@ disqusShortname = ""
     # Display your showcases here.
     
  [[params.tiles.showcase]]
-      title = "Homework 2"
-      subtitle = "Let's have a look at HTML Doc"
-      image = "risk_vs_return.jpeg"
+      title = "2016 California  Contributors"
+      subtitle = "Visualisation Challenge"
+      image = "ca.jpeg"
       url = "projects/project_returns/homework2"
 
 
     [[params.tiles.showcase]]
-     title = "Homework 3"
-      subtitle = "Let's have a look at HTML Doc"
-      image = "risk_vs_return.jpeg"
-      url = "projects/project_returns2/homework3"
+     title = "2016 California  Contributors"
+      subtitle = "Visualisation Challenge"
+      image = "ca.jpeg"
+      url = "blogs/california"
 
     [[params.tiles.showcase]]
       title = " Yield Curve Inversion"
@@ -111,10 +111,10 @@ disqusShortname = ""
       url = "blogs/yieldcurve"
 
     [[params.tiles.showcase]]
-      title = "Ipsum"
-      subtitle = "Nisl Sed Aliquam"
-      image = "pic04.jpg"
-      url = "blogs/ipsum"
+      title = "Drinking Trends around the World"
+      subtitle = "What countries drink the most?"
+      image = "drinking.jpg"
+      url = "blogs/drinking"
 
     [[params.tiles.showcase]]
       title = "Consequat"
