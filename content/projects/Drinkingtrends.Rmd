@@ -52,6 +52,9 @@ library(lubridate) #to handle dates
 
 # Where Do People Drink The Most Beer, Wine And Spirits?
 
+Almost every country likes drinking - some  just do a little more. Just for fun, try to think of what countries you think will come up in terms of consumption of beer, wine, and spirit before scrolling down. You might be surprised about a few of them! 
+
+Let's take a look.
 
 ```{r, load_alcohol_data}
 library(fivethirtyeight)
