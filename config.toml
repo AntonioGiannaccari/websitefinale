@@ -101,7 +101,7 @@ disqusShortname = ""
     [[params.tiles.showcase]]
      title = "2016 California  Contributors"
       subtitle = "Visualisation Challenge"
-      image = "ca.jpeg"
+      image = "general-CA.jpeg"
       url = "blogs/california"
 
     [[params.tiles.showcase]]
@@ -142,7 +142,7 @@ disqusShortname = ""
     title = "My Portfolio Website"
     subtitle = """During my first few months at London Business School, I have had the opportunity to learn how to explore, manipulate, and visualise data with R. 
     In a time when data is becoming increasingly important and accessible in any sector, this is an incredibly valuable skill. 
-    Throughtout the last few months, I have worked on many projects ranging from analysis of financial information to IMDB ratings which I am happy to share with you.
+    Throughtout the last few months, I have worked on many projects ranging from analysis of financial information to drinking trends  which I am happy to share with you.
     """
     buttonText = "Back to posts"
     url = "blogs"
