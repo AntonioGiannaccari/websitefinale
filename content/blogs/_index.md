@@ -6,4 +6,4 @@ slug: blogs
 title: My Story
 ---
 
-A few facts about me
+A  few facts about  me and the  amazing places I have had the chance to live in
