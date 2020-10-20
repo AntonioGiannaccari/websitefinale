@@ -95,7 +95,7 @@ disqusShortname = ""
       title = "cambiare"
       subtitle = "Visualisation Challenge"
       image = ".jpeg"
-      url = "projects/project_returns/homework2"
+      url = "projects/"
 
 
     [[params.tiles.showcase]]
@@ -108,7 +108,7 @@ disqusShortname = ""
       title = " Yield Curve Inversion"
       subtitle = "Analysing and Plotting the Curve"
       image = "yieldcurve.jpg"
-      url = "blogs/yieldcurve"
+      url = "projects/Yieldcurve.html"
 
     [[params.tiles.showcase]]
       title = "Drinking Trends around the World"
@@ -142,7 +142,7 @@ disqusShortname = ""
     title = "My Portfolio Website"
     subtitle = """During my first few months at London Business School, I have had the opportunity to learn how to explore, manipulate, and visualise data with R. 
     In a time when data is becoming increasingly important and accessible in any sector, this is an incredibly valuable skill. 
-    Throughtout the last few months, I have worked on many projects ranging from analysis of financial information to drinking trends  which I am happy to share with you.
+    Throughtout the last few months, I have worked on many projects ranging from analysis of financial information to drinking trends around the World  which I am happy to share with you.
     """
     buttonText = "Back to posts"
     url = "blogs"
