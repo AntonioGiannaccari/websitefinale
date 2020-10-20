@@ -19,8 +19,8 @@ disqusShortname = ""
   # CSS class.
 
   # Provide your metadata here.
-  name = "Your name"
-  description = "Your description"
+  name = "Antonio"
+  description = "Antonio's description"
 
   # Link custom assets relative to /static
   custom_css = []
@@ -82,7 +82,7 @@ disqusShortname = ""
     # To change the background image on the homepage banner, replace 'banner.jpg' in
     # the 'static/img' folder.
     title = "Hi, my name is Antonio"
-    subtitle = "A RESPONSIVE SITE TEMPLATE DESIGNED BY HTML5 UP\nAND RELEASED UNDER THE CREATIVE COMMONS."
+    subtitle = "Welcome to my portfolio website."
     buttonText = "Get Started"
 
 
