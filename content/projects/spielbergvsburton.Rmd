@@ -1,0 +1,104 @@
+---
+title: "IMDB ratings: Differences between directors"
+author: "Your name goes here"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    theme: flatly
+    highlight: zenburn
+    number_sections: yes
+    toc: yes
+    toc_float: yes
+    code_folding: show
+---
+
+
+```{r, setup, echo=FALSE}
+knitr::opts_chunk$set(
+  message = FALSE, 
+  warning = FALSE, 
+  tidy=FALSE,     # display code as typed
+  size="small")   # slightly smaller font for code
+options(digits = 3)
+
+# default figure size
+knitr::opts_chunk$set(
+  fig.width=6.75, 
+  fig.height=6.75,
+  fig.align = "center"
+)
+```
+
+
+```{r load-libraries, echo=FALSE}
+library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+library(mosaic)
+library(ggthemes)
+library(GGally)
+library(readxl)
+library(here)
+library(skimr)
+library(janitor)
+library(broom)
+library(tidyquant)
+library(infer)
+library(openintro)
+library(tidyquant)
+```
+
+
+During this project, my teammates and I explored the relationship in the mean IMDB rating for Steven Spielberg and Tim Burton films. We will do this by calculating the confidence intervals for the mean ratings of these two directors and then see if they overlap at the 95% confidence interval. 
+
+First of all, lets load the data and examine its structure.
+
+```{r load-movies-data}
+movies <- read_csv(here::here("data", "movies.csv"))
+glimpse(movies)
+```
+
+Let's calculate all the necessary metrics to answer this: 
+
+```{r}
+
+movies_cleaned <- movies %>% 
+  filter((director=="Tim Burton")|(director=="Steven Spielberg"))
+
+t.test(rating ~ director, data = movies_cleaned)
+
+Steve_vs_Tim <- movies_cleaned %>%
+  group_by(director) %>%
+  summarise(mean_rating = mean(rating, na.rm = TRUE),
+            sd_rating = sd(rating, na.rm=TRUE),
+            count = n(),
+            se_rating = sd_rating/sqrt(count),
+            t_critical = qt(0.975, count-1), 
+            margin_of_error = t_critical * se_rating,
+            lower = mean_rating - t_critical * se_rating,
+            upper = mean_rating + t_critical * se_rating
+            )
+
+Steve_vs_Tim
+
+```
+
+```{r}
+
+ggplot(Steve_vs_Tim, aes(x=reorder(director, mean_rating))) +
+  geom_point(aes(y=mean_rating, color=director, size=4)) +
+  geom_rect(aes(xmin=-Inf,xmax=+Inf,ymin=7.275,ymax=7.335),fill="grey",alpha=1)+
+  geom_errorbar(aes(ymin=lower, ymax=upper, color=director), width=0.1, size=1.5) +
+  coord_flip() +
+  labs (
+    title = "Do Spielberg and Burton have the same mean in IMDB ratings?",
+    y = "Mean IMDB Rating",
+    subtitle = "95% confidence intervals overlap"
+  ) +
+  theme_bw() +
+  theme(axis.title.y = element_blank(),
+        aspect.ratio = 1/1.5) +
+  theme(legend.position = "none")
+
+  
+  
+```
+As you can see, there is some overlap in rating between films by Steven Spielberg and  by Tim Burton, although not too much, at the 95% confidence interval. Ratings for Spielberg tend to be considerably higher than Burton.
