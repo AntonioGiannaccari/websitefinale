@@ -101,7 +101,7 @@ disqusShortname = ""
     [[params.tiles.showcase]]
      title = "2016 California  Contributors"
       subtitle = "Visualisation Challenge"
-      image = "california.jpeg"
+      image = "election.jpeg"
       url = "blogs/california"
 
     [[params.tiles.showcase]]
