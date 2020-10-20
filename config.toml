@@ -105,10 +105,10 @@ disqusShortname = ""
       url = "projects/project_returns2/homework3"
 
     [[params.tiles.showcase]]
-      title = "Magna"
-      subtitle = "Lorem Etiam Nullam"
-      image = "pic03.jpg"
-      url = "blogs/magna"
+      title = " Yield Curve Inversion"
+      subtitle = "Analysing and Plotting the Curve"
+      image = "yieldcurve.jpg"
+      url = "blogs/yieldcurve"
 
     [[params.tiles.showcase]]
       title = "Ipsum"
