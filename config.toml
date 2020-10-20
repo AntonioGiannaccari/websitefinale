@@ -133,7 +133,7 @@ disqusShortname = ""
     Throughtout the last few months, I have worked on many projects ranging from analysis of financial information to drinking trends around the World  which I am happy to share with you.
     """
     buttonText = "List of posts"
-    url = "projects"
+    url = "blogs"
 
 
   # Contact section

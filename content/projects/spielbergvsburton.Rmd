@@ -1,6 +1,6 @@
 ---
 title: "IMDB ratings: Differences between directors"
-author: "Your name goes here"
+author: "Antonio Giannaccari"
 date: "`r Sys.Date()`"
 output:
   html_document:
@@ -49,6 +49,7 @@ library(tidyquant)
 
 During this project, my teammates and I explored the relationship in the mean IMDB rating for Steven Spielberg and Tim Burton films. We will do this by calculating the confidence intervals for the mean ratings of these two directors and then see if they overlap at the 95% confidence interval. 
 
+# Unpack the data
 First of all, lets load the data and examine its structure.
 
 ```{r load-movies-data}
@@ -56,6 +57,7 @@ movies <- read_csv(here::here("data", "movies.csv"))
 glimpse(movies)
 ```
 
+# Construct the confidence interval
 Let's calculate all the necessary metrics to answer this: 
 
 ```{r}
@@ -80,6 +82,8 @@ Steve_vs_Tim <- movies_cleaned %>%
 Steve_vs_Tim
 
 ```
+
+# Visualise our findings
 
 ```{r}
 
