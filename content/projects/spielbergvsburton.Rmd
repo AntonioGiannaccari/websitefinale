@@ -46,8 +46,12 @@ library(openintro)
 library(tidyquant)
 ```
 
+#Introduction
 
-During this project, my teammates and I explored the relationship in the mean IMDB rating for Steven Spielberg and Tim Burton films. We will do this by calculating the confidence intervals for the mean ratings of these two directors and then see if they overlap at the 95% confidence interval. 
+As this is the first of my posts, I thought it would make sense to provide some context on the projects I will share. As  part of a team of three students, I analysed data to answer questions and visualise my findings in a clear way. Please find below an example.
+
+# Steve vs Tim
+During this project, my teammates and I explored the relationship in the mean IMDB rating for Steven Spielberg and Tim Burton films. We have done this by calculating the confidence intervals for the mean ratings of the two directors and then seeing whether they overlap at the 95% confidence interval. 
 
 # Unpack the data
 First of all, lets load the data and examine its structure.
