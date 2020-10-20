@@ -139,13 +139,12 @@ disqusShortname = ""
   # Section Type Two
   [params.two]
     enable = true
-    title = "Massa libero"
-    subtitle = """Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. 
-    Mauris aliquet magna magna sed nunc rhoncus pharetra. 
-    Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. 
-    Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero.
-    Mauris aliquet magna magna sed nunc rhoncus amet pharetra et feugiat tempus."""
-    buttonText = "Get Started"
+    title = "My Portfolio Pebsite"
+    subtitle = """During my first few months at London Business School, I have had the opportunity to learn how to explore, manipulate, and visualise data with R. 
+    In a time when data is becoming increasingly important and accessible in any sector, this is an incredibly valuable skill. 
+    Throughtout the last few months, I have worked on many projects ranging from analysis of financial information to IMDB ratings which I am happy to share with you.
+    """
+    buttonText = "Back to posts"
     url = "blogs"
 
 
