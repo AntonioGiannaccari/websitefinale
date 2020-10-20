@@ -1,0 +1,213 @@
+---
+title: 'Contributors to the 2016 US Presidential Election in California'
+author: "Antonio Giannaccari"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    theme: flatly
+    highlight: zenburn
+    number_sections: yes
+    toc: yes
+    toc_float: yes
+    code_folding: show
+  word_document:
+    toc: yes
+---
+
+
+```{r, setup, echo=FALSE}
+knitr::opts_chunk$set(
+  message = FALSE, 
+  warning = FALSE, 
+  tidy=FALSE,     # display code as typed
+  size="small")   # slightly smaller font for code
+options(digits = 3)
+
+# default figure size
+knitr::opts_chunk$set(
+  fig.width=6.75, 
+  fig.height=6.75,
+  fig.align = "center"
+)
+```
+
+
+```{r load-libraries, warning=FALSE, message=FALSE, echo=FALSE}
+library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+library(mosaic)
+library(ggthemes)
+library(lubridate)
+library(fivethirtyeight)
+library(here)
+library(skimr)
+library(janitor)
+library(vroom)
+library(tidyquant)
+library(rvest)    # scrape websites
+library(purrr)  
+library(lubridate) #to handle dates
+```
+
+
+
+With the an eye on the upcoming US presidential election of November 2020, let's take a look at some interesting data from the last one in 2016. Specifically, the dataset contains data regarding donors to Democratic and Republican candidates in the State of California, which has historically been a Democrat stronghold. Let's take a look at the data.
+
+
+
+# Unpack the data
+```{r, load_CA_data, warnings= FALSE, message=FALSE}
+# Make sure you use vroom() as it is significantly faster than read.csv()
+CA_contributors_2016 <- vroom::vroom(here::here("data","CA_contributors_2016.csv"))
+
+zip_url <- "http://www.uszipcodelist.com/download.html"
+
+tables_2 <- zip_url %>% 
+  read_html() %>% 
+  html_nodes(css="table")
+
+zip_codes <- map(tables_2, . %>% 
+               html_table(fill=TRUE)%>% 
+               clean_names())
+tables_2
+
+```
+
+```{r, load_CA_data2, warnings= FALSE, message=FALSE}
+# Make sure you use vroom() as it is significantly faster than read.csv()
+CA_contributors_2016 <- vroom::vroom(here::here("data","CA_contributors_2016.csv"))
+glimpse(CA_contributors_2016)
+```
+# Include the two frameworks
+```{r CA_contributors_2016_merge}
+zip_code_database <-
+vroom::vroom(here::here("data","zip_code_database.csv"))
+
+zip_code_database$zip = as.numeric(zip_code_database$zip)
+
+CA_contributors_2016_merge = CA_contributors_2016 %>%
+  inner_join(zip_code_database, by = "zip")
+glimpse(CA_contributors_2016_merge)
+```
+# Plot for Hillary Clinton
+```{r Clinton_plot}
+library(scales)
+
+clinton <- CA_contributors_2016_merge %>%
+  filter(cand_nm == "Clinton, Hillary Rodham") %>%
+  group_by(primary_city) %>%
+  summarise(
+    total_contribution = sum(contb_receipt_amt)
+  ) %>%
+  arrange(desc(total_contribution)) %>%
+  slice_max(total_contribution, n=8)
+
+clinton$title <- "Clinton, Hillary Rodham"
+
+p1 <- ggplot(clinton, aes(x = total_contribution, y = reorder(primary_city, total_contribution))) +
+  geom_col(fill="steelblue") +
+  labs (
+    title = "Where did candidates raise most money?",
+    x="Amount raised",
+    y=NULL
+    ) +
+  theme_bw() +
+  facet_grid(. ~ title) +
+  theme(title=element_text(size=8),
+        axis.text.x=element_text(size=6),
+        axis.text.y=element_text(size=6),
+        aspect.ratio = 1) +
+  scale_x_continuous(labels = scales::dollar) 
+
+p1
+
+```
+
+# Plot for Donald Trump
+```{r Trump_plot}
+
+trump <- CA_contributors_2016_merge %>%
+  filter(cand_nm == "Trump, Donald J.") %>%
+  group_by(primary_city) %>%
+  summarise(
+    total_contribution = sum(contb_receipt_amt)
+  ) %>%
+  arrange(desc(total_contribution)) %>%
+  slice_max(total_contribution, n=8)
+
+trump$title <- "Trump, Donald J."
+
+p2 <- ggplot(trump, aes(x = total_contribution, y = reorder(primary_city, total_contribution))) +
+  geom_col(fill="red3") +
+  labs (
+    x="Amount raised",
+    y=NULL
+    ) +
+  theme_bw() +
+  facet_grid(. ~ title) +
+  theme(title=element_text(size=8),
+        axis.text.x=element_text(size=6),
+        axis.text.y=element_text(size=6),
+        aspect.ratio = 1) +
+  scale_x_continuous(labels = scales::dollar) 
+
+p2
+
+```
+
+# Merge the two plots
+```{r merge_plot}
+library(patchwork)
+p1 + p2
+```
+Unsurprisingly, the largest donations were for Hillary Clinton' campaign. Let's now take a look at  more candidates.
+
+# Top 10 Candidate Plot
+```{r merge_10_plot}
+library(tidytext)
+
+CA_contributors_2016_merge <- CA_contributors_2016_merge %>%
+  group_by(cand_nm, CA_contributors_2016_merge$primary_city) %>%
+  mutate(total_contribution_city = sum(contb_receipt_amt))
+
+top_10 <- data.frame(CA_contributors_2016_merge$cand_nm, CA_contributors_2016_merge$primary_city, CA_contributors_2016_merge$total_contribution_city)
+top_10 <- unique(top_10)
+
+top_10_name <- CA_contributors_2016_merge %>%
+  group_by(cand_nm) %>%
+  summarise(total_contribution_all = sum(contb_receipt_amt)) %>%
+  arrange(desc(total_contribution_all)) %>%
+  slice_max(total_contribution_all, n=8) 
+
+top_10 <- top_10 %>%
+  mutate(iftop10 = CA_contributors_2016_merge.cand_nm %in% top_10_name$cand_nm)
+
+top_10 <- top_10[-which(top_10$iftop10 == FALSE),]
+
+top_10_new <- top_10 %>%
+  group_by(CA_contributors_2016_merge.cand_nm) %>%
+  top_n(-10,desc(CA_contributors_2016_merge.total_contribution_city))
+
+top_10_new %>%
+  mutate(CA_contributors_2016_merge.cand_nm=as.factor(CA_contributors_2016_merge.cand_nm), CA_contributors_2016_merge.primary_city=reorder_within(CA_contributors_2016_merge.primary_city, CA_contributors_2016_merge.total_contribution_city, CA_contributors_2016_merge.cand_nm)) %>%
+  ggplot(aes(CA_contributors_2016_merge.primary_city, CA_contributors_2016_merge.total_contribution_city, fill = CA_contributors_2016_merge.cand_nm)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~CA_contributors_2016_merge.cand_nm, scales = "free_y") +
+  coord_flip() +
+  scale_x_reordered() +
+  scale_y_continuous(expand = c(0,0)) +
+  labs(y = "Amount raised",
+    x = NULL,
+    title = "Where did candidates raise most money?") +
+  theme(title=element_text(size=8),
+    axis.text.x=element_text(size=5),
+    axis.text.y=element_text(size=5))
+
+```
+
+
+
+
+
+
+
+
