@@ -92,9 +92,9 @@ disqusShortname = ""
     # Display your showcases here.
     
  [[params.tiles.showcase]]
-      title = "2016 California  Contributors"
+      title = "cambiare"
       subtitle = "Visualisation Challenge"
-      image = "ca.jpeg"
+      image = ".jpeg"
       url = "projects/project_returns/homework2"
 
 
