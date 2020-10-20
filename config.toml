@@ -127,7 +127,8 @@ disqusShortname = ""
     In a time when data is becoming increasingly important and accessible in any sector, this is an incredibly valuable skill. 
     Throughtout the last few months, I have worked on many projects ranging from analysis of financial information to drinking trends around the World  which I am happy to share with you. Find out more about me in the My Story section of the Menu.
     """
-
+    buttonText = "My story"
+    url = "blogs"
 
   # Contact section
   [params.contact]
