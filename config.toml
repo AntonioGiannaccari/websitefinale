@@ -37,8 +37,8 @@ disqusShortname = ""
 
   # Navigation Section
   [params.navigation]
-    title = "Forty"
-    subtitle = "By HTML5 Up"
+    title = ""
+    subtitle = "Antonio Giannaccari"
     menu = "Menu"
     # Optional logo as brand stored in img/
     # logo = "logo.png"
@@ -139,7 +139,7 @@ disqusShortname = ""
   # Section Type Two
   [params.two]
     enable = true
-    title = "My Portfolio Pebsite"
+    title = "My Portfolio Website"
     subtitle = """During my first few months at London Business School, I have had the opportunity to learn how to explore, manipulate, and visualise data with R. 
     In a time when data is becoming increasingly important and accessible in any sector, this is an incredibly valuable skill. 
     Throughtout the last few months, I have worked on many projects ranging from analysis of financial information to IMDB ratings which I am happy to share with you.
@@ -172,32 +172,27 @@ disqusShortname = ""
     # by copying the corresponding map with frontmatter code.
     [[params.contact.email]]
     title = "Email"
-    email = "example@domain.com"
+    email = "agiannaccari.mfa2021@london.edu"
 
     [[params.contact.phone]]
     title = "Phone"
-    phone = "(000) 000-0000 x1234"
+    phone = "+44 (0) 777 1483692 x1234"
 
     [[params.contact.address]]
-    title = "Address"
-    street = "Street"
-    city = "City, ST 00000"
-    country = "Country"
+    title = "London Business School"
+    street = "Regent's Park"
+    city = "London NW1 4SA"
+    country = "United Kingdom"
 
   # Footer section
   [params.footer]
     enable = true
-    copyright = "Company Name"
+    copyright = "LBS"
 
-    # Uses font awesome icons
-    [[params.footer.social]]
-      icon = "fa-twitter"
-      url= "https://www.twitter.com"
-      label = "Twitter"
 
     [[params.footer.social]]
       icon = "fa-facebook"
-      url= "https://www.facebook.com"
+      url= "https://www.facebook.com/agiannaccari/"
       label = "Facebook"
 
     [[params.footer.social]]
@@ -207,12 +202,12 @@ disqusShortname = ""
     
     [[params.footer.social]]
       icon = "fa-github"
-      url= "https://www.github.com"
+      url= "https://github.com/AntonioGiannaccari"
       label = "GitHub"
 
     [[params.footer.social]]
       icon = "fa-linkedin"
-      url= "https://www.linkedin.com"
+      url= "https://www.linkedin.com/in/antonio-giannaccari-7a1360106/"
       label = "LinkedIn"
 
     [[params.footer.quicklinks]]
