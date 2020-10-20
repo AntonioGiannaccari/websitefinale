@@ -160,7 +160,7 @@ disqusShortname = ""
     phone = "+44 (0) 777 1483692 x1234"
 
     [[params.contact.address]]
-    title = "London Business School"
+    title = "Address"
     street = "Regent's Park"
     city = "London NW1 4SA"
     country = "United Kingdom"
