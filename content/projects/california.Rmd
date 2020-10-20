@@ -50,11 +50,14 @@ library(lubridate) #to handle dates
 
 
 
-With the an eye on the upcoming US presidential election of November 2020, let's take a look at some interesting data from the last one in 2016. Specifically, the dataset contains data regarding donors to Democratic and Republican candidates in the State of California, which has historically been a Democrat stronghold. Let's take a look at the data.
+Campaign donations are important aspects of candidates' presidential races. With  an eye on the upcoming US presidential election of November 2020, let's take a look at some interesting data from the last one in 2016. Specifically, the dataset contains data regarding donors to Democratic and Republican candidates in the State of California, which has historically been a Democrat stronghold. Let's take a look at the data with a view visual tools.
+
 
 
 
 # Unpack the data
+
+This step is important to make the data readily available for the rest of the analysis.
 ```{r, load_CA_data, warnings= FALSE, message=FALSE}
 # Make sure you use vroom() as it is significantly faster than read.csv()
 CA_contributors_2016 <- vroom::vroom(here::here("data","CA_contributors_2016.csv"))
@@ -203,7 +206,7 @@ top_10_new %>%
     axis.text.y=element_text(size=5))
 
 ```
-
+Again, we see that Clinton received by far the largest amount of donations in the State of California. The other Democratic candidate, Bernie Sanders, came as a far second. The remaining 8 candidates are all Republican.
 
 
 
