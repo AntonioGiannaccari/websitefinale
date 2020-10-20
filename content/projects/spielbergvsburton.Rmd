@@ -46,7 +46,7 @@ library(openintro)
 library(tidyquant)
 ```
 
-#Introduction
+# Introduction
 
 As this is the first of my posts, I thought it would make sense to provide some context on the projects I will share. As  part of a team of three students, I analysed data to answer questions and visualise my findings in a clear way. Please find below an example.
 

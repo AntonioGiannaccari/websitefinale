@@ -1689,14 +1689,16 @@ div.tocify {
 </div>
 
 
-<p>#Introduction</p>
+<div id="introduction" class="section level1">
+<h1><span class="header-section-number">1</span> Introduction</h1>
 <p>As this is the first of my posts, I thought it would make sense to provide some context on the projects I will share. As part of a team of three students, I analysed data to answer questions and visualise my findings in a clear way. Please find below an example.</p>
+</div>
 <div id="steve-vs-tim" class="section level1">
-<h1><span class="header-section-number">1</span> Steve vs Tim</h1>
+<h1><span class="header-section-number">2</span> Steve vs Tim</h1>
 <p>During this project, my teammates and I explored the relationship in the mean IMDB rating for Steven Spielberg and Tim Burton films. We have done this by calculating the confidence intervals for the mean ratings of the two directors and then seeing whether they overlap at the 95% confidence interval.</p>
 </div>
 <div id="unpack-the-data" class="section level1">
-<h1><span class="header-section-number">2</span> Unpack the data</h1>
+<h1><span class="header-section-number">3</span> Unpack the data</h1>
 <p>First of all, lets load the data and examine its structure.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>movies &lt;-<span class="st"> </span><span class="kw">read_csv</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;movies.csv&quot;</span>))</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="kw">glimpse</span>(movies)</span></code></pre></div>
@@ -1715,7 +1717,7 @@ div.tocify {
 ## $ rating              &lt;dbl&gt; 7.9, 7.7, 7.0, 8.1, 9.0, 6.5, 8.7, 7.5, 8.5, 7.2,…</code></pre>
 </div>
 <div id="construct-the-confidence-interval" class="section level1">
-<h1><span class="header-section-number">3</span> Construct the confidence interval</h1>
+<h1><span class="header-section-number">4</span> Construct the confidence interval</h1>
 <p>Let’s calculate all the necessary metrics to answer this:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>movies_cleaned &lt;-<span class="st"> </span>movies <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="st">  </span><span class="kw">filter</span>((director<span class="op">==</span><span class="st">&quot;Tim Burton&quot;</span>)<span class="op">|</span>(director<span class="op">==</span><span class="st">&quot;Steven Spielberg&quot;</span>))</span>
@@ -1753,7 +1755,7 @@ div.tocify {
 ## # … with 2 more variables: lower &lt;dbl&gt;, upper &lt;dbl&gt;</code></pre>
 </div>
 <div id="visualise-our-findings" class="section level1">
-<h1><span class="header-section-number">4</span> Visualise our findings</h1>
+<h1><span class="header-section-number">5</span> Visualise our findings</h1>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">ggplot</span>(Steve_vs_Tim, <span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">reorder</span>(director, mean_rating))) <span class="op">+</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y=</span>mean_rating, <span class="dt">color=</span>director, <span class="dt">size=</span><span class="dv">4</span>)) <span class="op">+</span></span>
 <span id="cb7-3"><a href="#cb7-3"></a><span class="st">  </span><span class="kw">geom_rect</span>(<span class="kw">aes</span>(<span class="dt">xmin=</span><span class="op">-</span><span class="ot">Inf</span>,<span class="dt">xmax=</span><span class="op">+</span><span class="ot">Inf</span>,<span class="dt">ymin=</span><span class="fl">7.275</span>,<span class="dt">ymax=</span><span class="fl">7.335</span>),<span class="dt">fill=</span><span class="st">&quot;grey&quot;</span>,<span class="dt">alpha=</span><span class="dv">1</span>)<span class="op">+</span></span>
